@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/casbin/casbin/v2"
 	fileadapter "github.com/casbin/casbin/v2/persist/file-adapter"
+	"github.com/casbin/casbin/v2/util"
 	"log"
 	"os"
 	"testing"
@@ -20,7 +21,7 @@ func TestRaceFail(t *testing.T) {
 	}
 
 	e.EnableAutoSave(true)
-	_ = e.AddNamedMatchingFunc("g2", "g2", NewURLMatcher().Match)
+	_ = e.AddNamedMatchingFunc("g2", "g2", util.KeyMatch4)
 
 	var gs [][]string
 	gs = append(gs, []string{"admin@metrika.co", "registered_user", "metrika"})
