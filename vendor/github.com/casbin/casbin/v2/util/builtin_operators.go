@@ -407,6 +407,7 @@ func GenerateGFunction(rm rbac.RoleManager) govaluate.ExpressionFunction {
 
 		// ...and see if we've already calculated this.
 		v, found := memorized.Load(key)
+		found = false
 		if found {
 			return v, nil
 		}
